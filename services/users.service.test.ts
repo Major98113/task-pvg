@@ -30,9 +30,9 @@ beforeAll(() => {
 });
 
 describe('UsersService', () => {
-    describe('getUsersByLoginSubstr', () => {
+    describe('getUsers', () => {
         it('Check that we have array of users with next params: id, login, age in default case', async () => {
-            const users: User[] | null = await UserServiceInstance.getUsersByLoginSubstr();
+            const users: User[] | null = await UserServiceInstance.getUsers();
 
             expect( Array.isArray( users ) ).toEqual(true);
             expect(
@@ -48,11 +48,11 @@ describe('UsersService', () => {
 
         it('Check that we have array of users less or equal of limit param', async () => {
             // @ts-ignore
-            expect( (await UserServiceInstance.getUsersByLoginSubstr('', LIMIT ))?.length <= LIMIT).toEqual(true);
+            expect( (await UserServiceInstance.getUsers('', LIMIT ))?.length <= LIMIT).toEqual(true);
         });
 
         it('Check that searching by substring works correctly', async () => {
-            const desiredUsers: User[] |  null = await UserServiceInstance.getUsersByLoginSubstr(testingUser.username);
+            const desiredUsers: User[] |  null = await UserServiceInstance.getUsers(testingUser.username);
             expect(desiredUsers?.length && desiredUsers[0].id).toEqual(testingUser.id);
         });
     });

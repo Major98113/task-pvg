@@ -1,5 +1,5 @@
 {
-  "name": "week_3",
+  "name": "task_tvg",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,8 +12,8 @@
     "jest-test": "jest --detectOpenHandles --config ./jest.config.js",
     "test": "npm run migrate-testing && npm run jest-test"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Major98113",
+  "license": "UNLICENSED",
   "devDependencies": {
     "@types/faker": "^5.1.2",
     "@types/jest": "^26.0.14",

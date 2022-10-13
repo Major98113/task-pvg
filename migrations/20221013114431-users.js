@@ -9,9 +9,9 @@ module.exports = {
     for await ( let user of users ){
       await queryInterface.bulkInsert( 'Users', [{
         id: user.id,
-        login: user.login,
+        username: user.username,
         password: user.password,
-        age: user.age
+        isDeleted: user.isDeleted
       }
       ]);
     }

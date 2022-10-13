@@ -62,13 +62,13 @@ class UsersService implements UserServiceInterface{
     }
 
     @log
-    public async getUsersByLoginSubstr( loginSubstringIn = '', limit = 20 ) {
+    public async getUsers( loginSubstringIn = '', limit = 20 ) {
         const users = await this.getUsersByParams({
             where: {
-                login: { [Op.like]: `%${ loginSubstringIn }%` },
+                username: { [Op.like]: `%${ loginSubstringIn }%` },
                 isDeleted: false
             },
-            attributes: ['id', 'username', 'age'],
+            attributes: ['id', 'username'],
             limit
         });
 
@@ -82,7 +82,7 @@ class UsersService implements UserServiceInterface{
                 id,
                 isDeleted: false
             },
-            attributes: ['id', 'username', 'age'],
+            attributes: ['id', 'username'],
         });
     }
 
@@ -95,20 +95,8 @@ class UsersService implements UserServiceInterface{
             id: uuidv4(),
             username: user.username,
             password: user.password,
-            age: user.age
+            isDeleted: false
         });
-    }
-
-    @log
-    public async updateUser( user: User ) {
-        const { id, username } = user;
-
-        if( !await this.isUserAlreadyExist( username ) )
-            return;
-
-        const [, [ updatedUser ] ] = await this.User.update( { ...user }, { returning: true, where: { id } });
-
-        return updatedUser;
     }
 
     @log

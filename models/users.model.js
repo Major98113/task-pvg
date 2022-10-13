@@ -6,7 +6,7 @@ module.exports.USER_SCHEMA = {
         primaryKey: true,
         allowNull: false
     },
-    login: {
+    username: {
         type: Sequelize.STRING,
         allowNull: false
     },

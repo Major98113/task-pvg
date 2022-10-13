@@ -13,16 +13,16 @@ class UserDataService implements UserDataServiceInterface{
     }
 
     @log
-    private async isUserDataAlreadyExist( groupId: string | undefined): Promise<boolean> {
-        if ( !groupId ) return false;
+    private async isUserDataAlreadyExist( userId: string | undefined): Promise<boolean> {
+        if ( !userId ) return false;
 
-        return Boolean( await this.getUserDataById( groupId ) );
+        return Boolean( await this.getUserDataById( userId ) );
     }
 
     @log
-    async getUserDataById(id: string) {
+    async getUserDataById(user_id: string) {
         return await this.UserData.findOne({
-            where: { id }
+            where: { user_id }
         });
     }
 
@@ -34,26 +34,14 @@ class UserDataService implements UserDataServiceInterface{
     @log
     async createUserData( userData:  UserData ) {
 
-        if (await this.isUserDataAlreadyExist(userData.id))
+        if (await this.isUserDataAlreadyExist(userData.user_id))
             return;
 
         return await this.UserData.create({
-            id: uuidv4(),
+            user_id: uuidv4(),
             name: userData.name,
             permissions: userData.permissions
         });
-    }
-
-    @log
-    async updateUserData( userData:  UserData ){
-        const { id } = userData;
-
-        if ( !await this.isUserDataAlreadyExist(userData.id) )
-            return;
-
-        const [, [ updatedUserData ] ] = await this.UserData.update( { ...userData }, { returning: true, where: { id } });
-
-        return updatedUserData;
     }
 
     @log

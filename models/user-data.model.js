@@ -6,7 +6,7 @@ module.exports.USER_DATA_SCHEMA = {
         primaryKey: true,
         allowNull: false
     },
-    name: {
+    role: {
         type: Sequelize.STRING,
         allowNull: false
     },

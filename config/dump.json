@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": "e7150ff8-bc06-4938-a1ec-9f69e76c66dc",
+      "username": "michael1234",
+      "password": "4321",
+      "isDeleted": false
+    },
+    {
+      "id": "5d24340f-e89e-49e6-8803-7bab101d2410",
+      "username": "sergey",
+      "password": "admin",
+      "isDeleted": false
+    },
+    {
+      "id": "15c40e6a-ff28-455d-b178-548686049d79",
+      "username": "ismael32",
+      "password": "3222",
+      "isDeleted": false
+    }
+  ],
+  "user_data": [
+    {
+      "user_id": "e7150ff8-bc06-4938-a1ec-9f69e76c66dc",
+      "role": "admin",
+      "permissions": [ "READ", "SHARE" ],
+      "age": 23
+    },
+    {
+      "user_id": "5d24340f-e89e-49e6-8803-7bab101d2410",
+      "role": "user",
+      "permissions": [ "WRITE", "DELETE" ],
+      "age": 31
+    },
+    {
+      "user_id": "15c40e6a-ff28-455d-b178-548686049d79",
+      "role": "user",
+      "permissions": [ "READ", "WRITE", "UPLOAD_FILES" ],
+      "age": 40
+    }
+  ]
+}

@@ -8,7 +8,7 @@ export interface UserData {
 }
 
 export interface UserDataServiceInterface {
-    getUserDataById( id: string ): Promise<UserData | null>,
+    getUserDataById( id: string, params?: any ): Promise<UserData | null>,
     getAllUserData(): Promise<UserData[] | null>,
     createUserData( userData:  UserData ): Promise<UserData | null>,
     removeUserData( id: string ): Promise<Error | null>

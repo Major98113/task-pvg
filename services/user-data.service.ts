@@ -20,10 +20,14 @@ class UserDataService implements UserDataServiceInterface{
     }
 
     @log
-    async getUserDataById(user_id: string) {
-        return await this.UserData.findOne({
-            where: { user_id }
-        });
+    async getUserDataById(user_id: string, params?: any) {
+        const age = params?.age;
+        let where = { user_id };
+        if (age) {
+            // @ts-ignore
+            where['age'] = age;
+        }
+        return await this.UserData.findOne({where});
     }
 
     @log

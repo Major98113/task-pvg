@@ -19,9 +19,9 @@ const UserDataServiceInstance = new UserDataService( serviceContainer.get<DBInte
 
 router.get('/', async ( req: express.Request, res: express.Response, next ) => {
     try {
-        // const { loginSubstringIn = '', limit = UserLimit.DEFAULT} = req.query;
+        const { limit = UserLimit.DEFAULT} = req.query;
         // @ts-ignore
-        const users: User[] | null = await UserServiceInstance.getUsers();
+        const users: User[] | null = await UserServiceInstance.getUsers(req.query, limit);
         const USERS_PROMISES = [];
         for (const { id, isDeleted } of users) {
             if (!isDeleted && id) {
